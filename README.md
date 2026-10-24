@@ -29,9 +29,9 @@ DSH 会自动压缩长会话，被压缩掉的内容就从模型上下文里消�
 
 要求：一个带 `ctx.sessionQuery` 的 DSH profile（自带的 `dsh-base` 就够），Node.js 18+。
 
-这个包没发布到 npm，目前从本地路径安装：
+本包未发布到 npm。可以从 DSH 插件市场安装（收录后），或用 DSH 官方插件管理从本仓库安装：
 
-1. 使用 DSH 官方插件管理，把本地包目录安装到当前 profile；无需手工修改 profile 配置文件或安装依赖。
+1. 在插件市场里找到 `dsh-memory-unlocked` 安装；或在插件管理中使用本仓库地址安装到当前 profile。无需手工修改 profile 配置文件或安装依赖。
 2. 包里的 [`cordis.patch.yml`](<cordis.patch.yml>) 负责把 `memory-unlocked` 插进组合。
 3. 按插件管理返回的应用状态与后续提示操作；只有提示需要时才重载 profile。变更会影响该 profile 的所有会话。
 
@@ -229,9 +229,9 @@ Zero dependencies. Package `dsh-memory-unlocked`, plugin id `memory-unlocked`.
 
 Requirements: a DSH profile with `ctx.sessionQuery` (the shipped `dsh-base` is enough), Node.js 18+.
 
-The package is not on npm yet, so install it from a local path:
+The package is not published on npm. Install it from the DSH plugin market (once listed), or from this repository with DSH's official plugin manager:
 
-1. Use DSH's official plugin manager to install the local package directory into the current profile. Do not edit profile files or install dependencies by hand.
+1. Install it from the plugin market, or use the plugin manager with this repository URL to install it into the current profile. Do not edit profile files or install dependencies by hand.
 2. The bundled [`cordis.patch.yml`](<cordis.patch.yml>) inserts the `memory-unlocked` row.
 3. Follow the application status and next steps returned by the plugin manager; reload only if requested. Changes affect all sessions in that profile.
 

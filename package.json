@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/propzhang/dsh-memory-unlocked#readme",
   "engines": {
-    "node": ">=18"
+    "node": ">=18",
+    "dsh": ">=0.2.1-rc.1 <0.3.0-0"
   }
 }

@@ -241,7 +241,7 @@ for (const size of [100_000, 900_000]) {
 	});
 }
 // Boundary-heavy scenarios are timed, not asserted as protected: this permits
-// an honest baseline-before-fix comparison. Only booleans/counts leave the run.
+// an honest baseline-vs-final comparison. Only booleans/counts leave the run.
 for (const [name, text, needle] of [
 	["redact-long-url-userinfo", `https://${"u".repeat(160)}:${"q".repeat(20_000)}@example.invalid/path`, "q".repeat(128)],
 	["redact-unclosed-pem-100k", "-----BEGIN " + "PRIVATE KEY-----\n" + "a".repeat(100_000), "a".repeat(128)]

@@ -1,5 +1,7 @@
 # Memory Unlocked
 
+![发送「大记忆恢复术」来让 AI 回想起忘记的对话](assets/banner.png)
+
 **简体中文** · [English](#english)
 
 ## 一句话说明 / In one sentence

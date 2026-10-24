@@ -1,6 +1,6 @@
 {
   "name": "dsh-memory-unlocked",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Memory-unlocked(大记忆恢复术)— DeepSeek Harness plugin: recall earlier conversations. Two drill-down tools (recall_history + recall_expand, both carrying seq) plus an automatic `agent/pre-step` hook that fires on any of THREE trigger phrases (Memory unlocked, case-insensitive; 大记忆恢复术; DJYHFS). Every returned historical text is redacted and wrapped in a random-token data boundary, because history is untrusted input.",
   "type": "module",
   "main": "lib/index.js",

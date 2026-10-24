@@ -1,0 +1,89 @@
+name: Bug report / 问题报告
+description: Something in the plugin does not behave as documented / 插件行为与文档不符
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a DSH **profile plugin**. This issue will be **public**.
+        Include versions and a minimal, manually reviewed reproduction using **invented data**, not complete session logs.
+        Automatic redaction is not anonymization; usernames, hostnames, paths and business content may remain.
+
+        **Suspected secret disclosure, scope escape or injection bypass? Do not post it here.**
+        Use [private vulnerability reporting](https://github.com/propzhang/dsh-memory-unlocked/security/advisories/new)
+        and read the [security policy](https://github.com/propzhang/dsh-memory-unlocked/blob/main/SECURITY.md).
+        If the private-report action is unavailable, ask the maintainer for a private channel without posting details.
+
+        此 issue 会公开。请使用虚构会话、合成凭据和最小复现，并人工检查粘贴内容；不要上传完整历史或配置导出。
+        疑似凭据泄露、越界读取或提示注入绕过，请使用上面的私密漏洞入口，不要公开细节。
+  - type: input
+    id: dsh-version
+    attributes:
+      label: DSH Desktop version / 桌面版本
+      description: Report the application version, not the Electron version. / 填应用版本，不要用 Electron 版本代替。
+      placeholder: "Version shown in About / 关于页面显示的版本"
+    validations:
+      required: true
+  - type: input
+    id: runtime-version
+    attributes:
+      label: "@deepseek-ai/* runtime version / 运行时版本"
+      placeholder: "0.2.x"
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version / commit / 插件版本与提交
+      placeholder: "0.1.0 @ abcdef0; source checkout or installed profile / 源码还是已安装版本"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: OS and Node version / 系统与 Node 版本
+      placeholder: "Windows 11, Node 24.x"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened / 实际与预期行为
+      description: Use invented inputs and the smallest reviewed output excerpt. State the entry point and expected result. Never include real credentials, complete conversations or private project content.
+      placeholder: |
+        Entry point / 入口: recall_history, recall_expand, /recall, or automatic recall
+        Invented reproduction / 虚构复现:
+        Expected / 预期:
+        Actual / 实际:
+    validations:
+      required: true
+  - type: textarea
+    id: retrieval-status
+    attributes:
+      label: Retrieval mode and limits / 检索模式与限制
+      description: If relevant, include index/scan mode and omission/truncation/cancellation notices. Redaction counts can include processed text later omitted; they are not visible-mask counts.
+      placeholder: "index / scan; snippet omitted / budget exhausted / cancelled; redacted and redactLabels (no source secrets)"
+  - type: textarea
+    id: config
+    attributes:
+      label: Minimal plugin config / 最小插件配置
+      description: Only the memory-unlocked row, manually scrubbed. Do not paste an entire profile, environment variables or credentials. / 仅填已人工检查的插件行，不贴完整 profile、环境变量或凭据。
+      render: yaml
+  - type: textarea
+    id: logs
+    attributes:
+      label: Minimal diagnostic excerpt / 最小诊断片段
+      description: Optional reviewed loader error or test summary. Replace personal paths, emails, hostnames and project names; do not upload session logs or screenshots containing private conversations.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Privacy and submission checks / 隐私与提交确认
+      options:
+        - label: I searched existing issues first. / 我已搜索现有问题。
+          required: true
+        - label: This is not a suspected security disclosure; I will use private reporting for secrets, scope escapes or injection bypasses. / 疑似安全问题将走私密报告，不在此披露。
+          required: true
+        - label: I used synthetic data and manually removed credentials, personal paths, emails, hostnames, project names and unrelated business content; I did not upload full session logs or profile exports. / 我已使用合成数据并人工清理敏感信息，没有上传完整历史或配置导出。
+          required: true

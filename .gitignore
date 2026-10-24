@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.pnp.cjs
+.yarn/cache
+.yarn/install-state.gz
+jspm_packages/
+
+# Caches and temporary build output
+.cache/
+.npm/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Test output and coverage
+coverage/
+.nyc_output/
+test-results/
+*.tap
+test-output.txt
+verify-output.txt
+
+# Environment files (never commit real credentials)
+.env
+.env.*
+!.env.example
+
+# Editor and IDE directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*~
+
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Benchmark reports are local measurements, not source.
+bench/reports/
+
+# Local scratch, notes and throwaway experiments — not for publication.
+scratch/
+tmp/
+*.local.md
+*.local.*

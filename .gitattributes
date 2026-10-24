@@ -1,0 +1,35 @@
+# Normalize all text files to LF, both in the working tree and in history.
+* text=auto eol=lf
+
+# Text sources (explicit, so a future rule cannot accidentally reclassify them).
+*.js    text
+*.mjs   text
+*.cjs   text
+*.json  text
+*.yml   text
+*.yaml  text
+*.md    text
+*.txt   text
+
+# Generated lockfiles: keep them out of diffs and mark them as generated.
+package-lock.json -diff linguist-generated=true
+pnpm-lock.yaml    -diff linguist-generated=true
+yarn.lock         -diff linguist-generated=true
+
+# Binary assets: never apply text conversion.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.bmp  binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
+*.tgz  binary
+*.7z   binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.eot  binary

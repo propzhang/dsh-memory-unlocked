@@ -1,0 +1,27 @@
+# Belt and braces only: package.json already declares a "files" allowlist
+# ("lib", "cordis.patch.yml", "NOTICE", "LICENSE.zh"), and that allowlist takes
+# precedence over ignore files. This file exists so the published tarball stays
+# minimal even if the allowlist is ever removed and packing falls back to
+# ignore-file rules.
+#
+# Defensive default: exclude everything the allowlist does not name.
+*
+.*
+!.npmignore
+
+# Ship the plugin itself and its DSH bundle patch. The directory is un-ignored
+# before its contents, because an ignore rule that excludes a directory stops
+# traversal — re-including children alone would not be enough.
+!/lib
+!/lib/**
+!/cordis.patch.yml
+
+# Always worth shipping for consumers; npm includes these regardless.
+!/package.json
+!/README.md
+!/LICENSE
+!/LICENSE.zh
+!/NOTICE
+
+# Explicitly not shipped: tests, benchmarks, dev docs and repo metadata are
+# excluded by the rules above. Nothing else needs to be listed.

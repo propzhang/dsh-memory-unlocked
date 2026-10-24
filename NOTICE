@@ -1,0 +1,38 @@
+Memory-unlocked (npm package: dsh-memory-unlocked)
+
+Title:    Memory-unlocked — a DeepSeek Harness plugin that recalls earlier
+          content from the workspace it is running in
+Author:   propzhang
+Source:   https://github.com/propzhang/dsh-memory-unlocked
+License:  CC BY-NC-SA 4.0 — https://creativecommons.org/licenses/by-nc-sa/4.0/
+Changes:  None. This is the original work. If you distribute a modified version,
+          state what you changed here — the license requires indicating changes.
+
+Copyright (c) 2026 propzhang
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+4.0 International License. The full legal code is in the LICENSE file next to this
+notice.
+
+What the three parts of that name mean for you:
+
+  BY  Attribution — credit "propzhang", link this project and the license, and say
+      if you changed anything.
+  NC  NonCommercial — do not use it, or a modified version of it, for commercial
+      advantage or monetary compensation. Selling it, or building a paid product on
+      it, is not permitted.
+  SA  ShareAlike — if you remix, transform, or build on it and share the result, you
+      must license your contribution under the same CC BY-NC-SA 4.0 terms, so it
+      cannot be relicensed into a permissive license and resold.
+
+So: read it, run it, modify it, and share it for noncommercial purposes. Do not
+sell it, and do not make money from it or from a modified version of it.
+Commercial use is not granted here; a separate commercial license can be obtained
+from the copyright holder.
+
+If you redistribute this or a modified version, pass on the LICENSE and NOTICE
+files with it.
+
+No third-party code is bundled. The plugin has no runtime or build dependencies,
+and the DeepSeek Harness sources consulted during development are not part of
+this repository.

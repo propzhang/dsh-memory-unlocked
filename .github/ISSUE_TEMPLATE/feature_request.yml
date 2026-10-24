@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest a capability or behaviour change
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Recall is deliberately confined to the current workspace and fails closed; changes that widen scope are out of scope by design.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What you are trying to do, and where the plugin gets in the way.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+      description: What should the tools, the automatic trigger, or the rendered output do instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - recall_history
+        - recall_expand
+        - /recall command
+        - agent/pre-step trigger
+        - configuration
+        - documentation
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

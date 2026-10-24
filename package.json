@@ -1,0 +1,40 @@
+{
+  "name": "dsh-memory-unlocked",
+  "version": "0.1.0",
+  "description": "Memory-unlocked(大记忆恢复术)— DeepSeek Harness plugin: recall earlier conversations. Two drill-down tools (recall_history + recall_expand, both carrying seq) plus an automatic `agent/pre-step` hook that fires on any of THREE trigger phrases (Memory unlocked, case-insensitive; 大记忆恢复术; DJYHFS). Every returned historical text is redacted and wrapped in a random-token data boundary, because history is untrusted input.",
+  "type": "module",
+  "main": "lib/index.js",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "NOTICE",
+    "LICENSE.zh"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "memory",
+    "recall",
+    "session-history"
+  ],
+  "author": "propzhang",
+  "license": "CC-BY-NC-SA-4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/propzhang/dsh-memory-unlocked.git"
+  },
+  "homepage": "https://github.com/propzhang/dsh-memory-unlocked#readme",
+  "engines": {
+    "node": ">=18"
+  }
+}

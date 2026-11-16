@@ -343,6 +343,32 @@ test("★ 宿主自产的运行时上下文不进骨架(噪声过滤)", async ()
 	assert.ok(text.includes("真正想说的话"), "★ 真正的内容要留着");
 });
 
+test("★★ DSH 0.2.2-rc.3 的 <system-reminder> 运行时上下文不进骨架(回归)", async () => {
+	// rc.3 起 runtime-context 的 user/message 正文是:
+	//   <system-reminder>\nThe following information describes your current session…
+	// 旧前缀(Current runtime context / Time sampled)不再匹配 —— 必须按新包装识别。
+	const wrapped = "<system-reminder>\nThe following information describes your current session. "
+		+ "It replaces earlier versions of this context, including any retained in conversation summaries.\n\n"
+		+ "Current working directory: C:\\work.\n\nCurrent DSH file policy: danger-full-access.\n</system-reminder>";
+	const cleared = "<system-reminder>\nCurrent runtime context: none. Earlier runtime-context snapshots no longer apply.\n</system-reminder>";
+	const fake = fakeSessionQuery({
+		async filterEvents() {
+			return [
+				{ sessionId: ME, seq: 21, type: "user/message", time: 21, surface: "shadowed", text: wrapped },
+				{ sessionId: ME, seq: 22, type: "user/message", time: 22, surface: "shadowed", text: cleared },
+				{ sessionId: ME, seq: 23, type: "user/message", time: 23, surface: "shadowed", text: "真正想说的话" }
+			];
+		}
+	});
+	const { tools } = setup({ sessionQuery: fake.sq });
+	const text = (await tools.get("recall_history").execute({}, { agent: AGENT })).published.text;
+	assert.equal(text.includes("The following information describes your current session"), false,
+		"★ rc.3 的 <system-reminder> 运行时上下文不得被当成'用户说的'");
+	assert.equal(text.includes("Current runtime context: none"), false,
+		"★ rc.3 的空提醒同样不得进骨架");
+	assert.ok(text.includes("真正想说的话"), "★ 真正的内容要留着");
+});
+
 /* ------------------------------------------------------------------ *
  * ②d ★ "这句话是不是人说的"过滤器(骨架里大部分是 DSH 注入的噪声)
  * ------------------------------------------------------------------ */
@@ -366,6 +392,14 @@ test("★★ 五类 DSH 注入消息必须被判为'不是人说的'", () => {
 		"Current DSH file policy: workspace-write."
 	]) {
 		assert.equal(isInjectedMessage(text), true, `必须判为注入:${text.slice(0, 36)}…`);
+	}
+	// ★ DSH 0.2.2-rc.3 起:运行时上下文改成 <system-reminder> 包装 + 新引导语
+	for (const text of [
+		"<system-reminder>\nThe following information describes your current session. It replaces earlier versions of this context…\n</system-reminder>",
+		"<system-reminder>\nCurrent runtime context: none. Earlier runtime-context snapshots no longer apply.\n</system-reminder>",
+		"The following information describes your current session: Current working directory: C:\\work."
+	]) {
+		assert.equal(isInjectedMessage(text), true, `rc.3 必须判为注入:${text.slice(0, 36)}…`);
 	}
 });
 
